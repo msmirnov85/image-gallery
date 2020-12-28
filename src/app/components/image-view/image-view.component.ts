@@ -12,6 +12,7 @@ export class ImageViewComponent implements OnInit {
   public isImageLoaded: boolean = false;
   public currentPicture: GetPictureByIdResponse;
   public isFullScreenMode: boolean = false;
+  private windowParams: string[] = [``, `width=500, height=500, scrollbars=yes, resizable=no`];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: ImageViewDialogData,
@@ -69,12 +70,12 @@ export class ImageViewComponent implements OnInit {
   }
 
   public shareFacebookUrl() {
-    window.open(`http://www.facebook.com/sharer.php?u=${this.currentPicture.full_picture}`, ``, `width=500, height=500, scrollbars=yes, resizable=no`);
+    window.open(`http://www.facebook.com/sharer.php?u=${this.currentPicture.full_picture}`, ...this.windowParams);
     return false;
   }
 
   public shareTweetUrl() {
-    window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(this.currentPicture.full_picture)}&text=${this.currentPicture.author}`, ``, `width=500, height=500, scrollbars=yes, resizable=no`);
+    window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(this.currentPicture.full_picture)}&text=${this.currentPicture.author}`, ...this.windowParams);
     return false;
   }
 
@@ -84,7 +85,7 @@ export class ImageViewComponent implements OnInit {
   }
 
   public shareLinkedinUrl() {
-    window.open(`https://www.linkedin.com/shareArticle?url=${encodeURIComponent(this.currentPicture.full_picture)}&title=${encodeURIComponent(this.currentPicture.author)}`, ``, `width=500, height=500, scrollbars=yes, resizable=no`);
+    window.open(`https://www.linkedin.com/shareArticle?url=${encodeURIComponent(this.currentPicture.full_picture)}&title=${encodeURIComponent(this.currentPicture.author)}`, ...this.windowParams);
     return false;
   }
 
