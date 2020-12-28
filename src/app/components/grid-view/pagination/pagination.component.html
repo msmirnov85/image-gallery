@@ -1,0 +1,47 @@
+<div>
+  <ul>
+    <li (click)="navigateToFirstPageIsPossible()"
+        class="first-page"
+        [class.disabled]="!previousItemValid">
+      <a>
+        <span>&lt;&lt;</span>
+      </a>
+    </li>
+    <li class="prev-page"
+        [class.disabled]="!previousItemValid">
+      <a (click)="navigateToPreviousPageIsPossible()"
+         aria-label="Previous">
+        <span>&lt;</span>
+      </a>
+    </li>
+    <li *ngIf="!firstPageVisible"
+        class="no-events">
+      <a>
+        <span aria-hidden="true">...</span>
+      </a>
+    </li>
+    <li *ngFor="let pageNo of pageList"
+        [ngClass]="{'active': pagingState.currentPage === pageNo}">
+      <a (click)="setCurrentPage(pageNo)">{{pageNo}}</a>
+    </li>
+    <li *ngIf="!lastPageVisible"
+        class="no-events">
+      <a>
+        <span aria-hidden="true">...</span>
+      </a>
+    </li>
+    <li [class.disabled]="!nextItemValid"
+        class="next-page">
+      <a (click)="navigateToNextPageIfPossible()"
+         aria-label="Next">
+        <span>&gt;</span>
+      </a>
+    </li>
+    <li [class.disabled]="!nextItemValid"
+        class="last-page">
+      <a (click)="navigateToLastPageIfPossible()">
+        <span>&gt;&gt;</span>
+      </a>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,16 @@
+div {
+  width: 300px;
+  height: 250px;
+  background-size: 100%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  box-shadow: 2px 2px 7px -1px #000;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity .3s;
+  border-radius: 5px;
+}
+
+div.show {
+  opacity: 1;
+}

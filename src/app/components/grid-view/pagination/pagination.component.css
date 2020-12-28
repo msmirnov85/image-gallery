@@ -1,0 +1,57 @@
+div {
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  box-shadow: 2px 2px 7px -1px #000;
+  height: 60px;
+}
+
+div:after {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+ul {
+  max-width: 100%;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+li {
+  display: inline-flex;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+a {
+  border-color: #d9d1d1;
+  color: black;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 100%;
+}
+
+.active a {
+  background-color: #2f6da4;
+  color: white;
+  border-color: #d9d1d1;
+  font-weight: bold;
+}
+
+.disabled a {
+  color: #ddd;
+  cursor: default;
+}
+
+.no-events a {
+  cursor: default;
+}

@@ -1,0 +1,14 @@
+ul {
+  padding: 7px;
+  text-align: center;
+  overflow: auto;
+  height: calc(100% - 60px);
+  box-sizing: border-box;
+}
+
+li {
+  display: inline-flex;
+  width: 300px;
+  max-width: calc(100% - 14px);
+  margin:7px;
+}

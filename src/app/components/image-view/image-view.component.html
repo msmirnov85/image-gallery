@@ -1,0 +1,42 @@
+<div class="holder"
+     [class.show]="isImageLoaded"
+     [class.fullScreen]="isFullScreenMode">
+
+  <div class="content"
+       *ngIf="currentPicture">
+    <div class="info">
+      <span class="author">{{currentPicture.author}}</span>
+      <span class="camera">{{currentPicture.camera}}</span>
+      <span class="tags">{{currentPicture.tags}}</span>
+    </div>
+
+    <span class="image"
+          [style.backgroundImage]="backgroundImage"
+          (click)="toggleFullScreen()"></span>
+
+    <button class="close"
+            (click)="close()">&#43;</button>
+    <button class="arrow previous"
+            (click)="previous()"
+            [disabled]="isPreviousButtonDisabled">&lt;</button>
+    <button class="arrow next"
+            (click)="next()"
+            [disabled]="isNextButtonDisabled">&gt;</button>
+  </div>
+
+  <div *ngIf="isImageLoaded"
+       class="social">
+    <ul>
+      <li>
+        <fb-like [url]=currentPicture.full_picture></fb-like>
+      </li>
+      <li>
+        <tweet [url]=currentPicture.full_picture></tweet>
+      </li>
+      <li>
+        <linkedin-share [url]=currentPicture.full_picture></linkedin-share>
+      </li>
+    </ul>
+  </div>
+
+</div>

@@ -1,0 +1,12 @@
+<ul>
+  <li *ngFor="let item of items">
+    <app-grid-view-item
+      [url]="item.cropped_picture"
+      [id]="item.id"
+      (onItemClick)="onItemClick($event)"></app-grid-view-item>
+  </li>
+</ul>
+
+<app-pagination
+  [pagingState]="pagingState"
+  (pageChanged)="handlePageChange()"></app-pagination>
