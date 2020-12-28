@@ -10,7 +10,6 @@ import { ImageViewComponent } from './components/image-view/image-view.component
 import { GridViewItemComponent } from './components/grid-view/grid-view-item/grid-view-item.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { PaginationComponent } from './components/grid-view/pagination/pagination.component';
-import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 
 @NgModule({
   declarations: [
@@ -25,8 +24,7 @@ import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MatDialogModule,
-    JwSocialButtonsModule
+    MatDialogModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

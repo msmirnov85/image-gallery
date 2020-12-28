@@ -68,6 +68,26 @@ export class ImageViewComponent implements OnInit {
     return this.data.imageIds.indexOf(this.currentPicture.id) === this.data.imageIds.length - 1;
   }
 
+  public shareFacebookUrl() {
+    window.open(`http://www.facebook.com/sharer.php?u=${this.currentPicture.full_picture}`, ``, `width=500, height=500, scrollbars=yes, resizable=no`);
+    return false;
+  }
+
+  public shareTweetUrl() {
+    window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(this.currentPicture.full_picture)}&text=${this.currentPicture.author}`, ``, `width=500, height=500, scrollbars=yes, resizable=no`);
+    return false;
+  }
+
+  public shareMailUrl() {
+    window.open(`mailto:?subject=${encodeURIComponent(this.currentPicture.author)}&body=${encodeURIComponent(this.currentPicture.full_picture)}`);
+    return false;
+  }
+
+  public shareLinkedinUrl() {
+    window.open(`https://www.linkedin.com/shareArticle?url=${encodeURIComponent(this.currentPicture.full_picture)}&title=${encodeURIComponent(this.currentPicture.author)}`, ``, `width=500, height=500, scrollbars=yes, resizable=no`);
+    return false;
+  }
+
 }
 
 export interface ImageViewDialogData {

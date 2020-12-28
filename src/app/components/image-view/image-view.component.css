@@ -110,8 +110,8 @@ button:disabled {
   position: absolute;
   bottom: 40px;
   transition: bottom .2s;
-  height: 50px;
-  padding-top: 20px;
+  height: 55px;
+  padding-top: 15px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -121,7 +121,34 @@ button:disabled {
 
 .social li {
   display: inline-block;
-  margin: 0 10px;
+  margin: 0 5px;
+  width: 60px;
+  height: 60px;
+}
+
+.social li span {
+  display: block;
+  height: 100%;
+  cursor: pointer;
+  background-image: url('../../../assets/social.png');
+  background-size: 450px 60px;
+  background-repeat: no-repeat;
+}
+
+.facebook {
+  background-position: 8px 0;
+}
+
+.twitter {
+  background-position: -50px 0;
+}
+
+.mail {
+  background-position: -398px 0;
+}
+
+.linkedin {
+  background-position: -341px 0;
 }
 
 .fullScreen .info,

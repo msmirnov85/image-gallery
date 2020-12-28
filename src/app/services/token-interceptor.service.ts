@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler,HttpEvent, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -7,27 +7,28 @@ import { catchError } from 'rxjs/operators';
 @Injectable()
 export class TokenInterceptorService implements HttpInterceptor {
 
-  constructor(public auth: AuthService) {}
+  constructor(public authService: AuthService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler):
-  Observable<HttpEvent<any>> {
-    request = request.clone({
-      setHeaders: {
-        Authorization: `Bearer ${this.auth.token}`
-      }
-    });
-
-    return next.handle(request)
+    Observable<HttpEvent<any>> {
+    return next.handle(this.injectToken(request))
       .pipe(
-        catchError((error: HttpErrorResponse) => {
+        catchError(async (error: HttpErrorResponse) => {
           if (error.status === 401) {
-            this.auth.refreshToken();
-            return next.handle(request.clone({
-                setHeaders: { Authorization: `Bearer ${this.auth.token}` }
-              }));
+            await this.authService.refreshToken();
+            return next.handle(this.injectToken(request)).toPromise();
           }
+
           throw error;
         }))
+  }
+
+  injectToken(request: HttpRequest<any>) {
+    return request.clone({
+      setHeaders: {
+        Authorization: `Bearer ${this.authService.token}`
+      }
+    });
   }
 
 }

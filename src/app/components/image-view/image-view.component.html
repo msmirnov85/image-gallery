@@ -24,17 +24,27 @@
             [disabled]="isNextButtonDisabled">&gt;</button>
   </div>
 
-  <div *ngIf="isImageLoaded"
-       class="social">
+  <div class="social">
     <ul>
       <li>
-        <fb-like [url]=currentPicture.full_picture></fb-like>
+        <span class="facebook"
+              title="Share on Facebook"
+              (click)="shareFacebookUrl()"></span>
       </li>
       <li>
-        <tweet [url]=currentPicture.full_picture></tweet>
+        <span class="twitter"
+              title="Twitter"
+              (click)="shareTweetUrl()"></span>
       </li>
       <li>
-        <linkedin-share [url]=currentPicture.full_picture></linkedin-share>
+        <span class="mail"
+              title="Email"
+              (click)="shareMailUrl()"></span>
+      </li>
+      <li>
+        <span class="linkedin"
+              title="Linkedin"
+              (click)="shareLinkedinUrl()"></span>
       </li>
     </ul>
   </div>
