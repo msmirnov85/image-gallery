@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -6,18 +6,18 @@ import { AuthService } from './services/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
   title = 'image-gallery';
-  public isAuthorized: boolean = false;
 
   constructor(
     private authService: AuthService
-  ) {  }
+  ) {
+    this.authService.initToken();
+  }
 
-  async ngOnInit() {
-    await this.authService.initToken();
-    this.isAuthorized = true;
+  public get isAuthorized(): boolean {
+    return !!this.authService.token;
   }
 
 }
